@@ -1,5 +1,10 @@
 package src;
 
+import src.entity.Bus;
+import src.entity.Student;
+import src.entity.User;
+import src.util.ReadWrite;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -92,17 +97,112 @@ public class Main {
                     System.out.println(size); // переменная количества
                     /* ЧИТАТЬ ИЗ ФАЙЛА
 
-                        какая то логика чтения из файла
-
+                    какая то логика чтения из файла
+                    // ЧИТАТЬ ИЗ ФАЙЛА
+                    //создаем массив размера сайз
+                    //генерируем объекты выбранного класса
+                    //если файла нет - создаем его
+                    //и закачиваем в файл если он пустой
+                    //затем читаем из файла
 
                     */
                 case 2:
-                    /*
-                    *
-                    *       Логика создания объектов вручную
-                    *
-                    *
-                    * */
+                    if (choise == 1) { //Bus
+                    String path = "src/data";
+                    String busFileName = "busFile.txt";
+
+                    ReadWrite.makeFile(path, busFileName);
+                    List<Bus> busList = new ArrayList<>();
+
+                    while (size > 0) {
+                        //Bus
+                        System.out.println(BLUE + "введите номер автобуса" + RESET);
+                        String num = scanner.nextLine();
+                        System.out.println(BLUE + "введите модель автобуса" + RESET);
+                        String model = scanner.nextLine();
+                        while (true) {
+                            System.out.println(BLUE + "введите пробег автобуса" + RESET);
+                            String input = scanner.nextLine();
+                            try {
+                                int mil = Integer.parseInt(input);
+                                if (mil < 0) {
+                                    System.out.println(RED + "Ошибка ввода. Попробуйте снова." + RESET);
+                                } else {
+                                    busList.add(new Bus.Builder()
+                                            .setNumber(num).setModel(model).setMileage(mil).build());
+                                    size--;
+                                    System.out.println("осталось ввести элементов - " + size);
+                                    break;
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println(RED + "Некорректный ввод. используйте целые числа." + RESET);
+                            }
+                        }
+                    }
+                    System.out.println(busList);
+                    running = false;
+                    break;
+                } else if (choise == 2) {
+                    //User создаем юзеров руками
+                    String path = "src/data";
+                    String userFileName = "userFile.txt";
+
+                    ReadWrite.makeFile(path, userFileName);
+                    List<User> userList = new ArrayList<>();
+
+                    while (size > 0) {
+                        //добавить сюда проверку на числа в имени --- маску
+                        System.out.println("введите имя пользователя");
+                        String name = scanner.nextLine();
+
+                        System.out.println("введите пароль");
+                        String pass = scanner.nextLine();
+
+                        //добавить сюда проверку на маску почты
+                        System.out.println("введите email");
+                        String mail = scanner.nextLine();
+                        userList.add(new User.Builder()
+                                .setName(name).setPassword(pass).setEmail(mail).build());
+                        size--;
+                        System.out.println("осталось ввести элементов - " + size);
+                    }
+                    System.out.println(userList);
+                    running = false;
+                    break;
+                } else if (choise == 3) {
+                    //Students создаем студентов руками
+                    String path = "src/data";
+                    String userFileName = "studentFile.txt";
+                    ReadWrite.makeFile(path, userFileName);
+                    List<Student> studentList = new ArrayList<>();
+
+                    System.out.println("введите группу студента");
+                    String stGroup = scanner.nextLine();
+                    System.out.println("введите номер зачетки студента");
+                    String recBookNum = scanner.nextLine();
+
+                    while (true) {
+                        System.out.println("введите средний балл студента");
+                        String input = scanner.nextLine();
+                        try{
+                            double averScore = Double.parseDouble(input);
+                            if (averScore < 0.0) {
+                                System.out.println(RED + "Ошибка ввода. Попробуйте снова." + RESET);
+                            } else {
+                                studentList.add(new Student.Builder()
+                                        .setGroupNumber(stGroup).setRecordBookNumber(recBookNum).setAverageScore(averScore).build());
+                                size--;
+                                System.out.println("осталось ввести элементов - " + size);
+                                break;
+                            }
+                        }catch (NumberFormatException e) {
+                            System.out.println(RED + "Некорректный ввод. используйте целые числа." + RESET);
+                        }
+                    }
+                    System.out.println(studentList);
+                }
+                running = false;
+                    break;
                 case 3:
                     /*
                     *
