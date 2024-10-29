@@ -1,7 +1,11 @@
 package src;
 
+import src.util.Menu;
+
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Hi");
+        Menu menu = new Menu();
+        menu.run();
     }
 }

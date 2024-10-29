@@ -44,11 +44,7 @@ public class User implements Comparable<User> {
 
     public static User fromString(String line) {
         String[] parts = line.split(",");
-        return new User.Builder()
-                .setName(parts[0])
-                .setEmail(parts[1])
-                .setPassword(parts[2])
-                .build();
+        return new User.Builder().setName(parts[0]).setEmail(parts[1]).setPassword(parts[2]).build();
     }
 
     @Override
@@ -65,9 +61,6 @@ public class User implements Comparable<User> {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "User{" + "name='" + name + '\'' + ", email='" + email + '\'' + '}';
     }
 }

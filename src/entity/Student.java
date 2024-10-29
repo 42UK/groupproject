@@ -44,10 +44,7 @@ public class Student implements Comparable<Student> {
 
     public static Student fromString(String line) {
         String[] parts = line.split(",");
-        return new Student.Builder()
-                .setGroupNumber(parts[0])
-                .setAverageScore(Double.parseDouble(parts[1]))
-                .build();
+        return new Student.Builder().setGroupNumber(parts[0]).setAverageScore(Double.parseDouble(parts[1])).build();
     }
 
     @Override
@@ -64,9 +61,6 @@ public class Student implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "groupNumber='" + groupNumber + '\'' +
-                ", averageScore=" + averageScore +
-                '}';
+        return "Student{" + "groupNumber='" + groupNumber + '\'' + ", averageScore=" + averageScore + '}';
     }
 }

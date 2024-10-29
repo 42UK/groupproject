@@ -60,21 +60,16 @@ public class Bus implements Comparable<Bus> {
             return b1.model.compareTo(b2.model);
         }
     };
+
     public static Bus fromString(String line) {
         String[] parts = line.split(",");
-        return new Bus.Builder()
-                .setNumber(parts[0])
-                .setModel(parts[1])
-                .setMileage(Integer.parseInt(parts[2]))
-                .build();
+        return new Bus.Builder().setNumber(parts[0]).setModel(parts[1]).setMileage(Integer.parseInt(parts[2])).build();
     }
+
+    public static Comparator<Bus> numberComparator = Comparator.comparing(b -> b.number);
 
     @Override
     public String toString() {
-        return "Bus{" +
-                "number='" + number + '\'' +
-                ", model='" + model + '\'' +
-                ", mileage=" + mileage +
-                '}';
+        return "Bus{" + "number='" + number + '\'' + ", model='" + model + '\'' + ", mileage=" + mileage + '}';
     }
 }
