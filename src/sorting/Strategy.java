@@ -1,4 +1,4 @@
-package src.com.example.groupproject.sorting;
+package src.sorting;
 
 
 public interface Strategy<T> {

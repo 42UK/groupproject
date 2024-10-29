@@ -1,4 +1,4 @@
-package src.com.example.groupproject.sorting;
+package src.sorting;
 
 import java.util.Comparator;
 

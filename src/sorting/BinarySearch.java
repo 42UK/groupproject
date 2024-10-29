@@ -1,6 +1,4 @@
-package src.com.example.groupproject.sorting;
-
-import java.util.Arrays;
+package src.sorting;
 
 public class BinarySearch<T extends Comparable<T>> implements Strategy<T> {
 
